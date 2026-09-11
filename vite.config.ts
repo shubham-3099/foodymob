@@ -16,7 +16,7 @@ export default defineConfig({
     host: "127.0.0.1",
     port: Number(process.env["PORT"] || 5173),
     allowedHosts: [
-    	process.env["RENDER_EXTERNAL_HOSTNAME"] || "test-d445.onrender.com",
+    	process.env["RENDER_EXTERNAL_HOSTNAME"] || "foodymob.onrender.com",
     ],
   },
   build: { outDir: "dist/client" },

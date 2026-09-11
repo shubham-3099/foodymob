@@ -1,0 +1,43 @@
+export const PLANS = [
+  {
+    id: "member-month",
+    kind: "member",
+    title: "Remove Ads",
+    amount: 9900,
+    original: 39900,
+    currency: "INR",
+    period: "month",
+    days: 30,
+  },
+  {
+    id: "member-year",
+    kind: "member",
+    title: "Remove Ads",
+    amount: 99900,
+    original: 478800,
+    currency: "INR",
+    period: "year",
+    days: 365,
+  },
+  {
+    id: "creator-month",
+    kind: "creator",
+    title: "Remove Ads + Priority Profile",
+    amount: 92000,
+    original: 150000,
+    currency: "INR",
+    period: "month",
+    days: 30,
+  },
+  {
+    id: "creator-year",
+    kind: "creator",
+    title: "Remove Ads + Priority Profile",
+    amount: 1000000,
+    original: 1104000,
+    currency: "INR",
+    period: "year",
+    days: 365,
+  },
+] as const;
+export const planById = (id: string) => PLANS.find((p) => p.id === id);

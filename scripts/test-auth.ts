@@ -39,7 +39,15 @@ export async function testAuth(db: Database, adminPhone: string, adminPassword: 
   ]);
   const cookie = (token: string, age: number) => `dish_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}`;
   function guard(req: Request) {
-    assert(process.env["NODE_ENV"] !== 'production' && ['localhost','127.0.0.1','[::1]'].includes(new URL(req.url).hostname),403,'Test accounts are localhost-only.');
+	const hostname = new URL(req.url).hostname;
+	const remoteAllowed = process.env["ALLOW_REMOTE_TEST_ACCOUNTS"] === "true";
+
+	assert(
+	  process.env["NODE_ENV"] !== "production" &&
+	    (remoteAllowed || ["localhost", "127.0.0.1", "[::1]"].includes(hostname)),
+	  403,
+	  remoteAllowed ? "Test accounts are disabled." : "Test accounts are localhost-only.",
+	); 
   }
   const sessionToken = (req: Request) => req.headers.get('cookie')?.match(/(?:^|;\s*)dish_session=([^;]+)/)?.[1] ?? '';
   async function current(req: Request): Promise<User | null> {

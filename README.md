@@ -1,4 +1,4 @@
-# DishSpot — v3 updated, local testing edition
+# FoodyMob — v3 updated, local testing edition
 
 ## Surprise and nearby update
 

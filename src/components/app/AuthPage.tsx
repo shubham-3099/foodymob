@@ -33,7 +33,7 @@ export function AuthPage({mode}: {mode:Mode}) {
   }
   const field=(name:string,label:string,type='text',autoComplete?:string)=><label key={name} className="auth-label"><span>{label}</span><Input required name={name} placeholder={label} type={type} autoComplete={autoComplete} minLength={name.toLowerCase().includes('password')?10:undefined} maxLength={128}/></label>;
   return <main className="auth-page">
-    <a className="auth-brand" href="/">DishSpot</a>
+    <a className="auth-brand" href="/">FoodyMob</a>
     <h1>{signup?<>Register<br/>As a User</>:mode==='verify'?'Verify':mode==='forgot'?'Reset password':'Welcome Back!'}</h1>
     <form onSubmit={submit} className="auth-form">
       {signup && <>{field('firstName','First name','text','given-name')}{field('lastName','Last name','text','family-name')}{field('email','Email','email','email')}</>}
